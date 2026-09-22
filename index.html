@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Medidor de Consumo Eléctrico</title>
+<meta name="description" content="Calcula el consumo eléctrico nominal (kWh) de una carga constante según la potencia y el tiempo de uso.">
+<meta name="theme-color" content="#2563eb">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="icons/icon-16.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app">
+  <header class="app-header">
+    <img src="icons/icon-192.png" alt="" class="logo" width="40" height="40">
+    <h1>Medidor de Consumo Eléctrico</h1>
+  </header>
+
+  <main>
+    <form id="calc-form" class="card" novalidate>
+      <div class="field">
+        <label for="power">Potencia de la carga (W)</label>
+        <input
+          type="number"
+          id="power"
+          name="power"
+          inputmode="decimal"
+          min="0"
+          step="any"
+          placeholder="Ej: 100"
+          required
+        >
+      </div>
+
+      <div class="field-group">
+        <div class="field">
+          <label for="hours">Horas</label>
+          <input
+            type="number"
+            id="hours"
+            name="hours"
+            inputmode="numeric"
+            min="0"
+            step="1"
+            placeholder="0"
+          >
+        </div>
+        <div class="field">
+          <label for="minutes">Minutos</label>
+          <input
+            type="number"
+            id="minutes"
+            name="minutes"
+            inputmode="numeric"
+            min="0"
+            max="59"
+            step="1"
+            placeholder="0"
+          >
+        </div>
+      </div>
+
+      <button type="submit" class="btn-primary">Calcular consumo</button>
+    </form>
+
+    <section id="result" class="card result" hidden aria-live="polite">
+      <p class="result-label">Consumo nominal</p>
+      <p class="result-value"><span id="result-kwh">0</span> kWh</p>
+      <p class="result-detail" id="result-detail"></p>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>Cálculo: (Potencia en W × Tiempo en horas) ÷ 1000</p>
+  </footer>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
